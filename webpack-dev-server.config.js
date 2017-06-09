@@ -21,8 +21,8 @@ const config = {
   devtool: 'eval',
   node: {fs: "empty"},
   output: {
-    path: path.resolve(__dirname, 'build'), // Path of output file
-    filename: 'app.js',
+    path: __dirname, // Path of output file
+    filename: 'bundle.js',
   },
   plugins: [
     // Enables Hot Modules Replacement
