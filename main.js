@@ -70,7 +70,7 @@ function processStyle(glStyle, globe, baseUrl, path, accessToken) {
             } else {
               sourceUrl = sourceUrl.replace('{z}/{x}/{y}.png', '');
               source = Cesium.createOpenStreetMapImageryProvider({
-                credit: glSource.attribution,
+                credit: glSource.attribution, // TODO Cesium cannot take HTML for credit
                 tileWidth: glSource.tileSize || 512,
                 tileHeight: glSource.tileSize || 512,
                 minimumLevel: glSource.minzoom,
@@ -94,7 +94,7 @@ export function apply(globe, style) {
   var accessToken, baseUrl, path;
 
   if (!(globe instanceof Cesium.CesiumWidget)) {
-    globe = new Cesium.CesiumWidget(globe);
+    globe = new Cesium.CesiumWidget(globe, {imageryProvider: false});
   }
 
   var parts = style.match(spriteRegEx);
